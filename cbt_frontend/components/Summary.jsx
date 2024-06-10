@@ -1,5 +1,6 @@
-import { Table } from "react-bootstrap";
+import { Container, Table, Row, Col } from "react-bootstrap";
 import Navigation from "@/components/Navigation";
+import Details from "./Details";
 
 function Summary() {
   const sample_data = [
@@ -84,18 +85,26 @@ function Summary() {
       {
         // TO DO MAKE INTO COMPONENT
       }
-
-      <Table>
-        <thead>
-          <tr>
-            <th>Amount</th>
-            <th>Category</th>
-            <th>Date</th>
-            <th>Bank</th>
-          </tr>
-        </thead>
-        <tbody>{rows}</tbody>
-      </Table>
+      <Container fluid>
+        <Row>
+          <Col md={9}>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Amount</th>
+                  <th>Category</th>
+                  <th>Date</th>
+                  <th>Bank</th>
+                </tr>
+              </thead>
+              <tbody>{rows}</tbody>
+            </Table>
+          </Col>
+          <Col md={3}>
+            <Details data={sample_data[0]} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
