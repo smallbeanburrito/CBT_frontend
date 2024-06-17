@@ -1,6 +1,7 @@
 import { Container, Table, Row, Col } from "react-bootstrap";
 import Navigation from "@/components/Navigation";
 import Details from "./Details";
+import { useState } from "react";
 
 function Summary() {
   const sample_data = [
@@ -68,9 +69,20 @@ function Summary() {
 
   const rows = [];
 
+  const [selectedRow, setSelectedRow] = useState(null);
+  const rowData = sample_data[selectedRow];
+
+  const handleRowClick = (index) => {
+    setSelectedRow(index);
+  };
+
   sample_data.forEach((data, index) =>
     rows.push(
-      <tr key={index}>
+      <tr
+        key={index}
+        onClick={() => handleRowClick(index)}
+        className={selectedRow == index ? "table-active" : ""}
+      >
         <td>{data.amount}</td>
         <td>{data.category}</td>
         <td>{data.date}</td>
@@ -101,7 +113,7 @@ function Summary() {
             </Table>
           </Col>
           <Col md={3}>
-            <Details data={sample_data[0]} />
+            <Details data={rowData} />
           </Col>
         </Row>
       </Container>
