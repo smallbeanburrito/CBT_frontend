@@ -1,0 +1,29 @@
+.container {
+    padding: 20px;
+  }
+  
+  .table {
+    cursor: pointer;
+    margin-bottom: 0;
+  }
+  
+  .table thead th {
+    background-color: #f8f9fa;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  .table-active {
+    background-color: #e2e6ea !important;
+  }
+  
+  .detailsCard {
+    height: 100%;
+  }
+  
+  .detailsCard .card-body {
+    padding: 20px;
+  }
+  
