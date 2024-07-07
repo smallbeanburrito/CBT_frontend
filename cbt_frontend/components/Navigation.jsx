@@ -1,8 +1,8 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Link from 'next/link';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Link from "next/link";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function Navigation() {
   return (
@@ -12,19 +12,19 @@ function Navigation() {
         <Container>
           <Nav>
             <Link href="/" passHref>
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
             </Link>
             <Link href="/monthly" passHref>
-              <Nav.Link>Monthly</Nav.Link>
+              <Nav.Link href="/monthly">Monthly</Nav.Link>
             </Link>
             <Link href="/visualizations" passHref>
-              <Nav.Link>Visualizations</Nav.Link>
+              <Nav.Link href="/visualizations">Visualizations</Nav.Link>
             </Link>
             <Link href="/trends" passHref>
-              <Nav.Link>Trends</Nav.Link>
+              <Nav.Link href="/trends">Trends</Nav.Link>
             </Link>
             <Link href="/link_accounts" passHref>
-              <Nav.Link>Link Account</Nav.Link>
+              <Nav.Link href="/link_accounts">Link Account</Nav.Link>
             </Link>
           </Nav>
         </Container>
