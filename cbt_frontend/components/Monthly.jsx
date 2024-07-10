@@ -45,7 +45,7 @@ function Monthly() {
   return (
     <Container>
       <Row>
-        <Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -67,7 +67,7 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -89,7 +89,7 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -111,7 +111,7 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -134,10 +134,8 @@ function Monthly() {
           </ResponsiveContainer>
         </Col>
       </Row>
-      <Row></Row>
-      <Row></Row>
       <Row>
-        <Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -159,7 +157,8 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+        <Col lg={6}></Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -181,7 +180,9 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+      </Row>
+      <Row>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
@@ -203,7 +204,98 @@ function Monthly() {
             </PieChart>
           </ResponsiveContainer>
         </Col>
-        <Col>
+        <Col lg={6}></Col>
+        <Col lg={3}>
+          {" "}
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={dataForPie}
+                dataKey="value"
+                outerRadius={100}
+                fill="#8884d8"
+              >
+                {dataForPie.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </Col>
+      </Row>
+      <Row>
+        <Col lg={3}>
+          {" "}
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={dataForPie}
+                dataKey="value"
+                outerRadius={100}
+                fill="#8884d8"
+              >
+                {dataForPie.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </Col>
+        <Col lg={3}>
+          {" "}
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={dataForPie}
+                dataKey="value"
+                outerRadius={100}
+                fill="#8884d8"
+              >
+                {dataForPie.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </Col>
+        <Col lg={3}>
+          {" "}
+          <ResponsiveContainer width="100%" height={300}>
+            <PieChart>
+              <Pie
+                data={dataForPie}
+                dataKey="value"
+                outerRadius={100}
+                fill="#8884d8"
+              >
+                {dataForPie.map((entry, index) => (
+                  <Cell
+                    key={`cell-${index}`}
+                    fill={COLORS[index % COLORS.length]}
+                  />
+                ))}
+              </Pie>
+              <Tooltip />
+              <Legend />
+            </PieChart>
+          </ResponsiveContainer>
+        </Col>
+        <Col lg={3}>
           {" "}
           <ResponsiveContainer width="100%" height={300}>
             <PieChart>
