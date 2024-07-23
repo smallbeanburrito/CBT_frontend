@@ -21,6 +21,7 @@ import {
 } from "recharts";
 
 import { sample_data } from "@/pages/data/sample_data";
+import Navigation from "./Navigation";
 
 function Monthly() {
   const COLORS = [
@@ -43,6 +44,8 @@ function Monthly() {
   }));
 
   return (
+    <>
+    <Navigation/>
     <Container>
       <Row>
         <Col lg={3}>
@@ -319,6 +322,8 @@ function Monthly() {
         </Col>
       </Row>
     </Container>
+    </>
+    
   );
 }
 
