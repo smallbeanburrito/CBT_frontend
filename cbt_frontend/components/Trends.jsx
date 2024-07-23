@@ -51,8 +51,7 @@ export default function Trends() {
             <Row>
                 <Col>
                     <ResponsiveContainer width="100%" height={300}>
-                        <LineChart data={data} width={730} 
-  height={250} >
+                        <LineChart data={data} >
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="month" />
                             <YAxis>
