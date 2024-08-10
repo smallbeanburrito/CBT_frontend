@@ -6,6 +6,8 @@ import {
   Dropdown,
   Table,
   ButtonGroup,
+  Card,
+  CardBody,
 } from "react-bootstrap";
 import {
   BarChart,
@@ -43,287 +45,299 @@ function Monthly() {
     value: categorySummary[key],
   }));
 
+  const monthlyAverage = sample_data.reduce((accumulator, currentValue) => {
+    return accumulator + currentValue.amount;
+  }, 0);
+
   return (
     <>
-    <Navigation/>
-    <Container>
-      <Row>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={6}></Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={6}></Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-      </Row>
-      <Row>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-        <Col lg={3}>
-          {" "}
-          <ResponsiveContainer width="100%" height={300}>
-            <PieChart>
-              <Pie
-                data={dataForPie}
-                dataKey="value"
-                outerRadius={100}
-                fill="#8884d8"
-              >
-                {dataForPie.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
-                ))}
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </Col>
-      </Row>
-    </Container>
+      <Navigation />
+      <Container>
+        <Row>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col
+            lg={6}
+            className="d-flex align-items-center justify-content-center"
+          >
+            <h2>Average Monthly Spending</h2>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={6}>
+            <Card>
+              <Card.Body>$ {monthlyAverage} </Card.Body>
+            </Card>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+        <Row>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+          <Col lg={3}>
+            {" "}
+            <ResponsiveContainer width="100%" height={300}>
+              <PieChart>
+                <Pie
+                  data={dataForPie}
+                  dataKey="value"
+                  outerRadius={100}
+                  fill="#8884d8"
+                >
+                  {dataForPie.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={COLORS[index % COLORS.length]}
+                    />
+                  ))}
+                </Pie>
+                <Tooltip />
+                <Legend />
+              </PieChart>
+            </ResponsiveContainer>
+          </Col>
+        </Row>
+      </Container>
     </>
-    
   );
 }
 
