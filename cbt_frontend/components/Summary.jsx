@@ -4,7 +4,6 @@ import {
   Table,
   Row,
   Col,
-  Card,
   Dropdown,
   ButtonGroup,
 } from "react-bootstrap";
@@ -65,6 +64,16 @@ function Summary() {
   if (!isClient) {
     return null; // or a loading spinner
   }
+
+  const categoryIcons = {
+    Food: "/hamburger.png",
+    Transportation: "/transportation.png",
+    Online: "/online.png",
+    Misc: "/misc.png",
+    Grocery: "/grocery.png",
+    Retail: "/retail.png",
+    Gas: "/gas.png",
+  };
 
   return (
     <>
@@ -152,7 +161,20 @@ function Summary() {
                     className={selectedRow === index ? "table-active" : ""}
                   >
                     <td>{`$${data.amount.toFixed(2)}`}</td>
-                    <td>{data.category}</td>
+                    <td>
+                      {data.category in categoryIcons ? (
+                        <>
+                          <img
+                            src={categoryIcons[data.category]}
+                            alt={data.category}
+                            style={{ width: "20px", height: "20px", marginRight: "5px" }}
+                          />
+                          {data.category}
+                        </>
+                      ) : (
+                        data.category
+                      )}
+                    </td>
                     <td>{data.date}</td>
                     <td>{data.bank}</td>
                   </tr>
