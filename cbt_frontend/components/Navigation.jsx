@@ -11,7 +11,7 @@ function Navigation() {
       <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Nav>
-            <Link href="/" passHref>
+            <Link href="/summary" passHref>
               <Nav.Link href="/">Home</Nav.Link>
             </Link>
             <Link href="/monthly" passHref>

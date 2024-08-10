@@ -11,6 +11,9 @@ import Navigation from "@/components/Navigation";
 import Details from "./Details";
 import "bootstrap/dist/css/bootstrap.min.css";
 import styles from "@/styles/Summary.module.css";
+import "react-date-range/dist/styles.css"; // main css file
+import "react-date-range/dist/theme/default.css"; // theme css file
+import { DateRangePicker } from "react-date-range";
 
 function Summary() {
   const sample_data = [
@@ -46,6 +49,23 @@ function Summary() {
 
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [selectedBank, setSelectedBank] = useState("All");
+
+  const [selectionRange, setSelectionRange] = useState({
+    startDate: new Date(),
+    endDate: new Date(),
+    key: "selection",
+  });
+
+  const [toggle, setToggle] = useState(false);
+
+  const handleToggle = () => {
+    setToggle(!toggle);
+  };
+
+  const handleSelect = (range) => {
+    setSelectionRange(range.selection);
+    console.log(range.selection);
+  };
 
   const filteredData = sample_data.filter(
     (item) =>
@@ -83,7 +103,23 @@ function Summary() {
           <Col>
             <h3>Summary</h3>
             <Dropdown as={ButtonGroup}>
-              <Dropdown.Toggle variant="secondary">Date Range</Dropdown.Toggle>
+              <Col>
+                <Row>
+                  <Dropdown.Toggle variant="secondary" onClick={handleToggle}>
+                    Date Range
+                  </Dropdown.Toggle>
+                </Row>
+                {toggle && (
+                  <Row>
+                    <DateRangePicker
+                      onChange={handleSelect}
+                      showSelectionPreview={true}
+                      moveRangeOnFirstSelection={false}
+                      ranges={[selectionRange]}
+                    />
+                  </Row>
+                )}
+              </Col>
               <Dropdown.Menu>
                 <Dropdown.Item href="#">07/01/2023 - 07/31/2023</Dropdown.Item>
               </Dropdown.Menu>
@@ -167,7 +203,11 @@ function Summary() {
                           <img
                             src={categoryIcons[data.category]}
                             alt={data.category}
-                            style={{ width: "20px", height: "20px", marginRight: "5px" }}
+                            style={{
+                              width: "20px",
+                              height: "20px",
+                              marginRight: "5px",
+                            }}
                           />
                           {data.category}
                         </>
