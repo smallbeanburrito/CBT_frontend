@@ -51,14 +51,15 @@ function Summary() {
   const [selectedBank, setSelectedBank] = useState("All");
 
   const [selectionRange, setSelectionRange] = useState({
-    startDate: new Date(),
-    endDate: new Date(),
+    startDate: new Date("01/01/2018"),
+    endDate: new Date("12/31/2024"),
     key: "selection",
   });
 
   const [toggle, setToggle] = useState(false);
 
   const handleToggle = () => {
+    console.log(selectionRange);
     setToggle(!toggle);
   };
 
@@ -70,7 +71,9 @@ function Summary() {
   const filteredData = sample_data.filter(
     (item) =>
       (selectedCategory === "All" || item.category === selectedCategory) &&
-      (selectedBank === "All" || item.bank === selectedBank)
+      (selectedBank === "All" || item.bank === selectedBank) &&
+      selectionRange.startDate <= new Date(item.date) &&
+      selectionRange.endDate > new Date(item.date)
   );
 
   useEffect(() => {
