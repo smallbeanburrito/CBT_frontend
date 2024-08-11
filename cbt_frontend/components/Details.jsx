@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Card } from 'react-bootstrap';
-import styles from '@/styles/Summary.module.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { Card } from "react-bootstrap";
+import styles from "@/styles/Summary.module.css";
 
 const Details = ({ data }) => {
   if (!data) {
@@ -17,9 +17,10 @@ const Details = ({ data }) => {
       <Card.Body>
         <Card.Title>{`$${data.amount.toFixed(2)}`}</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">{data.date}</Card.Subtitle>
-        <Card.Text>{data.category}</Card.Text>
+        <Card.Text>{data.category[0]}</Card.Text>
         <Card.Text>{data.bank}</Card.Text>
-        {data.description && <Card.Text>{data.description}</Card.Text>}
+        <Card.Text>{data.personal_finance_category.detailed}</Card.Text>
+        <Card.Text>{data.website}</Card.Text>
       </Card.Body>
     </Card>
   );

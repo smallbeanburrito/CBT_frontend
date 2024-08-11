@@ -18,6 +18,7 @@
     "react-bootstrap": "^2.10.2",
     "react-date-range": "^2.0.1",
     "react-dom": "^18",
+    "react-plaid-link": "^3.5.2",
     "recharts": "^2.12.7"
   },
   "devDependencies": {

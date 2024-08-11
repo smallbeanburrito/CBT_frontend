@@ -14,6 +14,7 @@ import styles from "@/styles/Summary.module.css";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { DateRangePicker } from "react-date-range";
+import { getTransactions } from "./AccountLink";
 
 function Summary() {
   const sample_data = [
@@ -44,6 +45,16 @@ function Summary() {
     { amount: 32.4, category: "Gas", bank: "BMO", date: "07/13/2023" },
   ];
 
+  const [transactions, setTransactions] = useState(null);
+  useEffect(() => {
+    async function load_transactions() {
+      const temp_transactions = await getTransactions();
+      console.log(temp_transactions);
+      setTransactions(temp_transactions);
+    }
+    load_transactions();
+  }, []);
+
   const [selectedRow, setSelectedRow] = useState(null);
   const [isClient, setIsClient] = useState(false);
 
@@ -68,9 +79,11 @@ function Summary() {
     console.log(range.selection);
   };
 
-  const filteredData = sample_data.filter(
+  const filteredData = (
+    transactions != null ? transactions["latest_transactions"] : sample_data
+  ).filter(
     (item) =>
-      (selectedCategory === "All" || item.category === selectedCategory) &&
+      (selectedCategory === "All" || item.category[0] === selectedCategory) &&
       (selectedBank === "All" || item.bank === selectedBank) &&
       selectionRange.startDate <= new Date(item.date) &&
       selectionRange.endDate > new Date(item.date)
@@ -154,28 +167,16 @@ function Summary() {
                 <Dropdown.Item onClick={() => setSelectedCategory("All")}>
                   All
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Food")}>
-                  Food
-                </Dropdown.Item>
                 <Dropdown.Item
-                  onClick={() => setSelectedCategory("Transportation")}
+                  onClick={() => setSelectedCategory("Food and Drink")}
                 >
-                  Transportation
+                  Food and Drink
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Online")}>
-                  Online
+                <Dropdown.Item onClick={() => setSelectedCategory("Travel")}>
+                  Travel
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Misc.")}>
-                  Misc.
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Grocery")}>
-                  Grocery
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Retail")}>
-                  Retail
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Gas")}>
-                  Gas
+                <Dropdown.Item onClick={() => setSelectedCategory("Payment")}>
+                  Payment
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -215,7 +216,7 @@ function Summary() {
                           {data.category}
                         </>
                       ) : (
-                        data.category
+                        data.category[0]
                       )}
                     </td>
                     <td>{data.date}</td>
@@ -226,7 +227,7 @@ function Summary() {
             </Table>
           </Col>
           <Col md={8}>
-            <Details data={sample_data[selectedRow]} />
+            <Details data={filteredData[selectedRow]} />
           </Col>
         </Row>
       </Container>

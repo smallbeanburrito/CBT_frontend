@@ -3,6 +3,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import Link from "next/link";
 import "bootstrap/dist/css/bootstrap.min.css";
+import AccountLink from "./AccountLink";
 
 function Navigation() {
   return (
@@ -23,9 +24,7 @@ function Navigation() {
             <Link href="/trends" passHref>
               <Nav.Link href="/trends">Trends</Nav.Link>
             </Link>
-            <Link href="/link_accounts" passHref>
-              <Nav.Link href="/link_accounts">Link Account</Nav.Link>
-            </Link>
+            <AccountLink />
           </Nav>
         </Container>
       </Navbar>
