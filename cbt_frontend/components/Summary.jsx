@@ -79,8 +79,11 @@ function Summary() {
     console.log(range.selection);
   };
 
+  console.log(transactions);
   const filteredData = (
-    transactions != null ? transactions["latest_transactions"] : sample_data
+    transactions != null && transactions.error == undefined
+      ? transactions["latest_transactions"]
+      : sample_data
   ).filter(
     (item) =>
       (selectedCategory === "All" || item.category[0] === selectedCategory) &&
