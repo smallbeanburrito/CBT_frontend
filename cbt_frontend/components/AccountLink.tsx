@@ -42,7 +42,6 @@ const Link: React.FC<LinkProps> = (props: LinkProps) => {
   const router = useRouter();
   const endpoint = '/api/set_access_token'
   const onSuccess = React.useCallback((public_token, metadata) => {
-    getTransactions();
     // send public_token to server
     const response = fetch(`${baseUrl}${endpoint}`, {
       method: 'POST',
@@ -51,6 +50,7 @@ const Link: React.FC<LinkProps> = (props: LinkProps) => {
       },
       body: JSON.stringify({ public_token }),
     });
+    getTransactions();
     router.push("/summary");
   }, []);
   const config: Parameters<typeof usePlaidLink>[0] = {
