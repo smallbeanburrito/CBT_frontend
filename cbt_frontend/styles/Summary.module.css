@@ -1,29 +1,54 @@
 .container {
-    padding: 20px;
-  }
-  
-  .table {
-    cursor: pointer;
-    margin-bottom: 0;
-  }
-  
-  .table thead th {
-    background-color: #f8f9fa;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .table-active {
-    background-color: #e2e6ea !important;
-  }
-  
-  .detailsCard {
-    height: 100%;
-  }
-  
-  .detailsCard .card-body {
-    padding: 20px;
-  }
-  
+  padding: 20px;
+  background-color: #e0f7e9; 
+  min-height: 100vh; 
+}
+
+.table {
+  cursor: pointer;
+  margin-bottom: 0;
+  background-color: #fff; 
+  border-radius: 8px; 
+  overflow: hidden; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table thead th {
+  background-color: #a7d7c5;
+  color: #333; 
+}
+
+.table tbody tr:hover {
+  background-color: #cde9dd; 
+}
+
+.table-active {
+  background-color: #b8e0cf !important; 
+}
+
+.detailsCard {
+  height: 100%;
+  background-color: #fff; 
+  border-radius: 8px; 
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.detailsCard .card-body {
+  padding: 20px;
+}
+
+.header {
+  color: #333; 
+  margin-bottom: 20px; 
+}
+
+.dropdown-toggle {
+  margin-bottom: 10px; 
+}
+
+.dropdown-menu {
+  background-color: #fff; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+}
