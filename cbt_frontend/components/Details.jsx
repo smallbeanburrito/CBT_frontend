@@ -19,8 +19,13 @@ const Details = ({ data }) => {
         <Card.Subtitle className="mb-2 text-muted">{data.date}</Card.Subtitle>
         <Card.Text>{data.category[0]}</Card.Text>
         <Card.Text>{data.bank}</Card.Text>
-        <Card.Text>{data.personal_finance_category.detailed}</Card.Text>
-        <Card.Text>{data.website}</Card.Text>
+        {data.personal_finance_category ? (
+          <Card.Text>{data.personal_finance_category.detailed}</Card.Text>
+        ) : (
+          ""
+        )}
+
+        {data.website ? <Card.Text>{data.website}</Card.Text> : ""}
       </Card.Body>
     </Card>
   );
