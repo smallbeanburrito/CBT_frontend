@@ -1,22 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Container,
   Row,
   Col,
-  Dropdown,
   Table,
   ButtonGroup,
   Card,
-  CardBody,
 } from "react-bootstrap";
 import {
-  BarChart,
-  Bar,
   PieChart,
   Pie,
   Cell,
-  XAxis,
-  YAxis,
   Tooltip,
   Legend,
   ResponsiveContainer,
@@ -49,13 +43,39 @@ function Monthly() {
     return accumulator + currentValue.amount;
   }, 0);
 
+  const containerStyle = {
+    padding: "20px",
+    backgroundColor: "#e0f7e9", // Light green background
+    minHeight: "100vh",
+  };
+
+  const cardStyle = {
+    backgroundColor: "#fff",
+    borderRadius: "8px",
+    padding: "20px",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    textAlign: "center",
+    fontSize: "24px",
+    fontWeight: "bold",
+  };
+
+  const headingStyle = {
+    color: "#333",
+    marginBottom: "20px",
+    textAlign: "center",
+  };
+
   return (
     <>
       <Navigation />
-      <Container>
+      <Container style={containerStyle}>
+        <Row>
+          <Col lg={12}>
+            <h2 style={headingStyle}>Monthly Summary</h2>
+          </Col>
+        </Row>
         <Row>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -77,7 +97,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -99,7 +118,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -121,7 +139,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -145,7 +162,6 @@ function Monthly() {
         </Row>
         <Row>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -170,10 +186,9 @@ function Monthly() {
             lg={6}
             className="d-flex align-items-center justify-content-center"
           >
-            <h2>Average Monthly Spending</h2>
+            <h2 style={headingStyle}>Average Monthly Spending</h2>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -197,7 +212,6 @@ function Monthly() {
         </Row>
         <Row>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -219,12 +233,11 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={6}>
-            <Card>
-              <Card.Body>$ {monthlyAverage} </Card.Body>
+            <Card style={cardStyle}>
+              <Card.Body>$ {monthlyAverage.toFixed(2)}</Card.Body>
             </Card>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -248,7 +261,6 @@ function Monthly() {
         </Row>
         <Row>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -270,7 +282,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -292,7 +303,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie
@@ -314,7 +324,6 @@ function Monthly() {
             </ResponsiveContainer>
           </Col>
           <Col lg={3}>
-            {" "}
             <ResponsiveContainer width="100%" height={300}>
               <PieChart>
                 <Pie

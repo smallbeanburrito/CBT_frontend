@@ -118,122 +118,121 @@ function Summary() {
     <>
       <Navigation />
       <Container fluid className={styles.container}>
-        <Row>
-          <Col>
-            <h3>Summary</h3>
-            <Dropdown as={ButtonGroup}>
-              <Col>
-                <Row>
-                  <Dropdown.Toggle variant="secondary" onClick={handleToggle}>
-                    Date Range
-                  </Dropdown.Toggle>
-                </Row>
-                {toggle && (
-                  <Row>
-                    <DateRangePicker
-                      onChange={handleSelect}
-                      showSelectionPreview={true}
-                      moveRangeOnFirstSelection={false}
-                      ranges={[selectionRange]}
+  <Row>
+    <Col>
+      <h3 className={styles.header}>Summary</h3>
+      <Dropdown as={ButtonGroup}>
+        <Col>
+          <Row>
+            <Dropdown.Toggle variant="secondary" onClick={handleToggle}>
+              Date Range
+            </Dropdown.Toggle>
+          </Row>
+          {toggle && (
+            <Row>
+              <DateRangePicker
+                onChange={handleSelect}
+                showSelectionPreview={true}
+                moveRangeOnFirstSelection={false}
+                ranges={[selectionRange]}
+              />
+            </Row>
+          )}
+        </Col>
+        <Dropdown.Menu>
+          <Dropdown.Item href="#">07/01/2023 - 07/31/2023</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <Dropdown as={ButtonGroup}>
+        <Dropdown.Toggle variant="secondary">
+          Bank ({selectedBank})
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setSelectedBank("All")}>
+            All
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedBank("TD")}>
+            TD
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedBank("RBC")}>
+            RBC
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedBank("CIBC")}>
+            CIBC
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+      <Dropdown as={ButtonGroup}>
+        <Dropdown.Toggle variant="secondary">
+          Category ({selectedCategory})
+        </Dropdown.Toggle>
+        <Dropdown.Menu>
+          <Dropdown.Item onClick={() => setSelectedCategory("All")}>
+            All
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedCategory("Food and Drink")}>
+            Food and Drink
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedCategory("Travel")}>
+            Travel
+          </Dropdown.Item>
+          <Dropdown.Item onClick={() => setSelectedCategory("Payment")}>
+            Payment
+          </Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    </Col>
+  </Row>
+  <Row>
+    <Col md={4}>
+      <Table striped bordered hover responsive className={styles.table}>
+        <thead>
+          <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Date</th>
+            <th>Bank</th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredData.map((data, index) => (
+            <tr
+              key={index}
+              onClick={() => handleRowClick(index)}
+              className={selectedRow === index ? "table-active" : ""}
+            >
+              <td>{`$${data.amount.toFixed(2)}`}</td>
+              <td>
+                {data.category in categoryIcons ? (
+                  <>
+                    <img
+                      src={categoryIcons[data.category]}
+                      alt={data.category}
+                      style={{
+                        width: "20px",
+                        height: "20px",
+                        marginRight: "5px",
+                      }}
                     />
-                  </Row>
+                    {data.category}
+                  </>
+                ) : (
+                  data.category[0]
                 )}
-              </Col>
-              <Dropdown.Menu>
-                <Dropdown.Item href="#">07/01/2023 - 07/31/2023</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown as={ButtonGroup}>
-              <Dropdown.Toggle variant="secondary">
-                Bank ({selectedBank})
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setSelectedBank("All")}>
-                  All
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedBank("TD")}>
-                  TD
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedBank("RBC")}>
-                  RBC
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedBank("CIBC")}>
-                  CIBC
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-            <Dropdown as={ButtonGroup}>
-              <Dropdown.Toggle variant="secondary">
-                Category ({selectedCategory})
-              </Dropdown.Toggle>
-              <Dropdown.Menu>
-                <Dropdown.Item onClick={() => setSelectedCategory("All")}>
-                  All
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => setSelectedCategory("Food and Drink")}
-                >
-                  Food and Drink
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Travel")}>
-                  Travel
-                </Dropdown.Item>
-                <Dropdown.Item onClick={() => setSelectedCategory("Payment")}>
-                  Payment
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-        </Row>
-        <Row>
-          <Col md={4}>
-            <Table striped bordered hover responsive className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Amount</th>
-                  <th>Category</th>
-                  <th>Date</th>
-                  <th>Bank</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData.map((data, index) => (
-                  <tr
-                    key={index}
-                    onClick={() => handleRowClick(index)}
-                    className={selectedRow === index ? "table-active" : ""}
-                  >
-                    <td>{`$${data.amount.toFixed(2)}`}</td>
-                    <td>
-                      {data.category in categoryIcons ? (
-                        <>
-                          <img
-                            src={categoryIcons[data.category]}
-                            alt={data.category}
-                            style={{
-                              width: "20px",
-                              height: "20px",
-                              marginRight: "5px",
-                            }}
-                          />
-                          {data.category}
-                        </>
-                      ) : (
-                        data.category[0]
-                      )}
-                    </td>
-                    <td>{data.date}</td>
-                    <td>{data.bank}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </Col>
-          <Col md={8}>
-            <Details data={filteredData[selectedRow]} />
-          </Col>
-        </Row>
-      </Container>
+              </td>
+              <td>{data.date}</td>
+              <td>{data.bank}</td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+    </Col>
+    <Col md={8}>
+      <Details data={filteredData[selectedRow]} />
+    </Col>
+  </Row>
+</Container>
+
     </>
   );
 }
